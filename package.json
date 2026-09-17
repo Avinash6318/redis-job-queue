@@ -1,0 +1,30 @@
+{
+  "name": "redis-job-queue",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "worker": "nodemon --exec tsx src/worker.ts",
+    "producer": "tsx src/producer.ts",
+    "status": "tsx src/checkStatus.ts",
+    "dlq": "tsx src/checkDLQ.ts",
+    "api": "tsx src/api.ts",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "ioredis": "^6.0.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.4.1",
+    "nodemon": "^3.1.14",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2"
+  }
+}
