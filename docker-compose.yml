@@ -16,7 +16,7 @@ services:
       API_PORT: 3000
     command: ["node", "dist/api.js"]
     ports:
-      - "3000:3000"
+      - "127.0.0.1:3000:3000"
 
   worker:
     build: .
