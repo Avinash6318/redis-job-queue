@@ -6,9 +6,9 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-deploy:
     name: Build and Deploy
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
 
     steps:
       - name: Checkout repository
@@ -26,14 +26,7 @@ jobs:
       - name: Build TypeScript
         run: npm run build
 
-      - name: Deploy to EC2
-        uses: appleboy/ssh-action@v1.2.2
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USERNAME }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
-            cd ~/redis-job-queue
-            git pull origin main
-            docker compose up -d --build
-            docker compose ps
+      - name: Deploy Docker services
+        run: |
+          docker compose up -d --build
+          docker compose ps
