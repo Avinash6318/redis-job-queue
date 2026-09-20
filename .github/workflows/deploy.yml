@@ -30,3 +30,8 @@ jobs:
         run: |
           docker compose up -d --build
           docker compose ps
+      
+      - name: Verify API health
+        run: |
+          sleep 5
+          curl --fail http://localhost:3000/health
